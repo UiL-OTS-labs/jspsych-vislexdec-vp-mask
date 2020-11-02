@@ -23,8 +23,8 @@ const PRACTICE_ITEMS = [
         item_type: UNRELATED, 
         word: "hot",
         prime: "stapler", // 'stapler'
-        pre_mask: "######", //stapler -> 6 * '#' 
-        post_mask: "&&&&&&" //stapler -> 6 * '&'
+        pre_prime_mask: "######", //stapler -> 6 * '#' 
+        post_prime_mask: "&&&&&&" //stapler -> 6 * '&'
     }
 ];
 

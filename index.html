@@ -52,14 +52,7 @@
         stimulus: PRE_PRACTICE_INSTRUCTION, 
         choices: [OK_BUTTON_TEXT],
         response_ends_trial: true,
-        data: {
-            condition: jsPsych.timelineVariable('item_type'),
-            prime: jsPsych.timelineVariable('prime'),
-            word: jsPsych.timelineVariable('word'),
-            id: jsPsych.timelineVariable('id'),
-            trial_phase: 'present_fixation',
-            useful_data_flag: false 
-        }
+        data: { useful_data_flag: false }
     };
     
     var well_done_screen = {
@@ -67,42 +60,21 @@
         stimulus: PRE_TEST_INSTRUCTION, 
         choices: [OK_BUTTON_TEXT],
         response_ends_trial: true,
-        data: {
-            condition: jsPsych.timelineVariable('item_type'),
-            prime: jsPsych.timelineVariable('prime'),
-            word: jsPsych.timelineVariable('word'),
-            id: jsPsych.timelineVariable('id'),
-            trial_phase: 'present_fixation',
-            useful_data_flag: false 
-        }
+        data: { useful_data_flag: false }
     };
 
     var end_screen_local = {
         type: 'html-keyboard-response',
         stimulus: "Thanks, you're done. Press spacebar to see data", 
         choices: ['space'],
-        data: {
-            condition: jsPsych.timelineVariable('item_type'),
-            prime: jsPsych.timelineVariable('prime'),
-            word: jsPsych.timelineVariable('word'),
-            id: jsPsych.timelineVariable('id'),
-            trial_phase: 'present_fixation',
-            useful_data_flag: false 
-        }
+        data: { useful_data_flag: false }
     };
 
     var end_screen_server = {
         type: 'html-button-response',
         stimulus: "Thanks, you're done. Would you like to click OK?", 
         choices: [OK_BUTTON_TEXT, 'NO'],
-        data: {
-            condition: jsPsych.timelineVariable('item_type'),
-            prime: jsPsych.timelineVariable('prime'),
-            word: jsPsych.timelineVariable('word'),
-            id: jsPsych.timelineVariable('id'),
-            trial_phase: 'present_fixation',
-            useful_data_flag: false 
-        }
+        data: { useful_data_flag: false }
     };
 
     var present_fixation = {
@@ -110,14 +82,20 @@
         stimulus: '<span style="font-size:40px;">+</span>',
         choices: jsPsych.NO_KEYS,
         trial_duration: FIXCROSS_DURATION,
-        data: {
-            condition: jsPsych.timelineVariable('item_type'),
-            prime: jsPsych.timelineVariable('prime'),
-            word: jsPsych.timelineVariable('word'),
-            id: jsPsych.timelineVariable('id'),
-            trial_phase: 'present_fixation',
-            useful_data_flag: false 
-        }
+        data: { useful_data_flag: false }
+    };
+
+    var present_pre_prime_mask = {
+        type: 'html-keyboard-response',
+        stimulus: function(){ 
+            return "<p class='stimulus'>" + 
+            jsPsych.timelineVariable('pre_prime_mask', true) + "</p>";
+        },
+        choices: jsPsych.NO_KEYS,
+        trial_duration: PRE_PRIME_MASK_DURATION,
+        post_trial_gap: 0,
+        prompt: "",
+        data: { useful_data_flag: false }
     };
 
     var present_prime = {
@@ -130,16 +108,21 @@
         trial_duration: PRIME_DURATION,
         post_trial_gap: PRIME_GAP_DURATION,
         prompt: "",
-        data: {
-            condition: jsPsych.timelineVariable('item_type'),
-            word: jsPsych.timelineVariable('word'),
-            prime: jsPsych.timelineVariable('prime'),
-            word: jsPsych.timelineVariable('word'),
-            id: jsPsych.timelineVariable('id'),
-            trial_phase: 'present_prime',
-            useful_data_flag: false 
-        }
+        data: { useful_data_flag: false }
     };
+
+    var present_post_prime_mask = {
+        type: 'html-keyboard-response',
+        stimulus: function(){ 
+            return "<p class='stimulus'>" + 
+            jsPsych.timelineVariable('post_prime_mask', true) + "</p>";
+        },
+        choices: jsPsych.NO_KEYS,
+        trial_duration: POST_PRIME_MASK_DURATION,
+        post_trial_gap: 0,
+        prompt: "",
+        data: { useful_data_flag: false }
+    };    
 
     var present_word = {
         type: 'html-keyboard-response',
@@ -154,7 +137,9 @@
             condition: jsPsych.timelineVariable('item_type'),
             word: jsPsych.timelineVariable('word'),
             prime: jsPsych.timelineVariable('prime'),
-            id:jsPsych.timelineVariable('id'),
+            pre_prime_mask: jsPsych.timelineVariable('pre_prime_mask'),
+            post_prime_mask: jsPsych.timelineVariable('post_prime_mask'),
+            id: jsPsych.timelineVariable('id'),
             trial_phase: 'present_word',
             useful_data_flag: true
         },
@@ -188,20 +173,14 @@
         },
         choices: jsPsych.NO_KEYS,
         trial_duration: FEEDBACK_DURATION,
-        data: {
-            condition: jsPsych.timelineVariable('item_type'),
-            word: jsPsych.timelineVariable('word'),
-            prime: jsPsych.timelineVariable('prime'),
-            id:jsPsych.timelineVariable('id'),
-            trial_phase: 'present_word',
-            useful_data_flag: false
-        }
+        data: { useful_data_flag: false }
     };
     
     // procedures 
     var practice_procedure = {
         timeline:[
             present_fixation,
+            present_pre_prime_mask,
             present_prime,
             present_word,
             present_feedback
@@ -213,6 +192,7 @@
     var trial_procedure = {
         timeline:[
             present_fixation,
+            present_pre_prime_mask,
             present_prime,
             present_word,
             ],
