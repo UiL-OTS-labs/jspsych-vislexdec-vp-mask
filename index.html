@@ -65,7 +65,10 @@
     
     var well_done_screen = {
         type: 'html-button-response',
-        stimulus: PRE_TEST_INSTRUCTION, 
+        stimulus: function(){ 
+            return "<div class='instruction' >" + 
+            '<p>' + PRE_TEST_INSTRUCTION + '</p></div>';
+        }, 
         choices: [OK_BUTTON_TEXT],
         response_ends_trial: true,
         data: { useful_data_flag: false }
