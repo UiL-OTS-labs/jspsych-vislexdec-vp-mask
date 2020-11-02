@@ -22,6 +22,9 @@ const PRE_PRACTICE_INSTRUCTION =
     " as possible whether you think "                   +
     "<i>both words are real words or not</i>."          +
     " Try to make no mistakes.<BR><BR>"                 +
+    "The first word will be masked with a "             +
+    "string of characters, like '####', so pay"         +
+    " attention!<BR><BR>"                               +
     "To respond, hit the <kbd>Z</kbd> key for "         +
     "<i>Yes</i> and the "                               +
     "<kbd>M</kbd> key for <i>No</i><BR><BR>"            +
