@@ -10,19 +10,89 @@ const GROUPS = [
 ];
 
 const PRACTICE_ITEMS = [
-    { id: 1, item_type: NON_WORD, word: "palve", prime: "onion" },
-    { id: 2, item_type: UNRELATED, word: "hot", prime: "stapler" }
+    {
+        id: 1, 
+        item_type: NON_WORD,
+        word: "palve",
+        prime: "onion", // 'onion'
+        pre_prime_mask: "#####", //onion -> 5 * '#''
+        post_prime_mask: "&&&&&" //onion -> 5 * '&''
+    },
+    {
+        id: 2, 
+        item_type: UNRELATED, 
+        word: "hot",
+        prime: "stapler", // 'stapler'
+        pre_mask: "######", //stapler -> 6 * '#' 
+        post_mask: "&&&&&&" //stapler -> 6 * '&'
+    }
 ];
 
 const LIST_GROUP1 = [
-    { id: 1, item_type: NON_WORD, word: "slirque", prime: "eyes" },
-    { id: 2, item_type: NON_WORD, word: "crawse", prime: "piano" },
-    { id: 3, item_type: NON_WORD, word: "twurp", prime: "rabbit" },
-    { id: 4, item_type: NON_WORD, word: "clem", prime: "flower" },
-    { id: 5, item_type: RELATED, word: "white", prime: "snow" },
-    { id: 6, item_type: RELATED, word: "travel", prime: "suitcase" },
-    { id: 7, item_type: UNRELATED, word: "letter", prime: "garden" },
-    { id: 8, item_type: UNRELATED, word: "clown", prime: "forest" }
+    {
+        id: 1, 
+        item_type: NON_WORD,
+        word: "slirque",
+        prime: "eyes",
+        pre_prime_mask: "####",
+        post_prime_mask: "&&&&"
+    },
+    {
+        id: 2, 
+        item_type: NON_WORD, 
+        word: "crawse", 
+        prime: "piano",
+        pre_prime_mask: "#####",
+        post_prime_mask: "&&&&&" 
+    },
+    {
+        id: 3,
+        item_type: NON_WORD,
+        word: "twurp",
+        prime: "rabbit",
+        pre_prime_mask: "######",
+        post_prime_mask: "&&&&&&" 
+    },
+    {
+        id: 4, 
+        item_type: NON_WORD,
+        word: "clem",
+        prime: "flower",
+        pre_prime_mask: "######",
+        post_prime_mask: "&&&&&&"
+    },
+    {
+        id: 5,
+        item_type: RELATED,
+        word: "white",
+        prime: "snow",
+        pre_prime_mask: "####",
+        post_prime_mask: "$$$$" 
+    },
+    {
+        id: 6,
+        item_type: RELATED,
+        word: "travel",
+        prime: "suitcase",
+        pre_prime_mask: "########",
+        post_prime_mask: "&&&&&&&&"
+    },
+    {
+        id: 7,
+        item_type: UNRELATED,
+        word: "letter",
+        prime: "garden",
+        pre_prime_mask: "######",
+        post_prime_mask: "&&&&&&"
+    },
+    {
+        id: 8, 
+        item_type: UNRELATED,
+        word: "clown",
+        prime: "forest",
+        pre_prime_mask: "######",
+        post_prime_mask: "&&&&&&"
+    }
 ];
 
 // Add a second list of stimuli when required.
