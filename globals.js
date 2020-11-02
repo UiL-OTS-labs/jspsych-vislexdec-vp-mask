@@ -10,7 +10,7 @@ const PRIME_DURATION = 50;
 
 //placeholder globaks for programmtic mask generation implementation
 const USE_POST_PRIME_MASK = true; // implement post mask
-const POST_PRIME_MASK_DURATION = 80; // mask duration in milliseconds
+const POST_PRIME_MASK_DURATION = 501; // mask duration in milliseconds
 //const DEFAULT_POST_MASK_CHARACTER = '$'; // the string to be repeated
 
 const WORD_DURATION = 1000;
