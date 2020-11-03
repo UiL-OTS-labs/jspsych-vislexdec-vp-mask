@@ -34,8 +34,7 @@ that the layouting of masks and prime will be consistent, _if_ the user takes in
 - In ```index.html```
     - New sub trial phases:
 		- present_pre_prime_mask
-		- present_post_prime_mask
-    - Deleted 'data' key-value pairs from all but the 'response phase' test item presentation variables.
+		- present_post_prime_mask	
 	- Additions of the new sub trial phases' in the timeline procedures: 
 		- practice_procedure
 		- trial_procedure
