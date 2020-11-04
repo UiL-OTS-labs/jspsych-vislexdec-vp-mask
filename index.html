@@ -48,14 +48,11 @@
         group: group_name
     });
 
-    //////////////// test page flows ///////////////////////////////
-    
     var start_screen = {
         type: 'html-button-response',
         stimulus: function(){ 
-            return "<div class='instruction' >" + 
-            '<p>' + PRE_PRACTICE_INSTRUCTION + '</p></div>';
-        }, 
+            return "<div class='instruction' >" + '<p>' + PRE_PRACTICE_INSTRUCTION + '</p></div>';
+        },
         choices: [OK_BUTTON_TEXT],
         response_ends_trial: true,
         data: { useful_data_flag: false }
@@ -64,8 +61,7 @@
     var well_done_screen = {
         type: 'html-button-response',
         stimulus: function(){ 
-            return "<div class='instruction' >" + 
-            '<p>' + PRE_TEST_INSTRUCTION + '</p></div>';
+            return "<div class='instruction' >" + '<p>' + PRE_TEST_INSTRUCTION + '</p></div>';
         }, 
         choices: [OK_BUTTON_TEXT],
         response_ends_trial: true,
@@ -74,18 +70,18 @@
 
     var end_screen_local = {
         type: 'html-keyboard-response',
-        stimulus: "Thanks, you're done. Press spacebar to see data", 
+        stimulus: "Thanks, you're done. Press spacebar to see data",
         choices: ['space'],
         data: { useful_data_flag: false }
     };
 
     var end_screen_server = {
         type: 'html-button-response',
-        stimulus: "Thanks, you're done. Would you like to click OK?", 
+        stimulus: "Thanks, you're done. Would you like to click OK?",
         choices: [OK_BUTTON_TEXT, 'NO'],
         data: { useful_data_flag: false }
     };
-
+    
     var present_fixation = {
         type: 'html-keyboard-response',
         stimulus: '<span style="font-size:40px;">+</span>',
@@ -97,8 +93,7 @@
     var present_pre_prime_mask = {
         type: 'html-keyboard-response',
         stimulus: function(){ 
-            return "<p class='stimulus'>" + 
-            jsPsych.timelineVariable('pre_prime_mask', true) + "</p>";
+            return "<p class='stimulus'>" + jsPsych.timelineVariable('pre_prime_mask', true) + "</p>";
         },
         choices: jsPsych.NO_KEYS,
         trial_duration: PRE_PRIME_MASK_DURATION,
@@ -110,8 +105,7 @@
     var present_prime = {
         type: 'html-keyboard-response',
         stimulus: function(){ 
-            return "<p class='stimulus'>" + 
-            jsPsych.timelineVariable('prime', true) + "</p>";
+            return "<p class='stimulus'>" + jsPsych.timelineVariable('prime', true) + "</p>";
         },
         choices: jsPsych.NO_KEYS,
         trial_duration: PRIME_DURATION,
@@ -123,8 +117,7 @@
     var present_post_prime_mask = {
         type: 'html-keyboard-response',
         stimulus: function(){ 
-            return "<p class='stimulus'>" + 
-            jsPsych.timelineVariable('post_prime_mask', true) + "</p>";
+            return "<p class='stimulus'>" jsPsych.timelineVariable('post_prime_mask', true) + "</p>";
         },
         choices: jsPsych.NO_KEYS,
         trial_duration: POST_PRIME_MASK_DURATION,
@@ -135,8 +128,9 @@
 
     var present_word = {
         type: 'html-keyboard-response',
-        stimulus: function(){ return "<p class='stimulus'>" +
-        jsPsych.timelineVariable('word', true)+"</p>"; },
+        stimulus: function(){ 
+            return "<p class='stimulus'>" + jsPsych.timelineVariable('word', true)+"</p>"; 
+        },
         choices: ['z','m'],
         response_ends_trial: true,
         stimulus_duration: WORD_DURATION,
@@ -153,33 +147,29 @@
             useful_data_flag: true
         },
         on_finish: function(data){
-        if(data.condition == 'RELATED'){
-            var correct = data.key_press == 
-            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('z');
-        } else if (data.condition == 'UNRELATED'){
-            var correct = data.key_press == 
-            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('z');
-        } else {
-            var correct = data.key_press == 
-            jsPsych.pluginAPI.convertKeyCharacterToKeyCode('m');
-        }
-        data.correct = correct;
+            if (data.condition == 'RELATED'){
+                var correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode('z');
+            } else if (data.condition == 'UNRELATED'){
+                var correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode('z');
+            } else {
+                var correct = data.key_press == jsPsych.pluginAPI.convertKeyCharacterToKeyCode('m');
+            }
+            data.correct = correct;
         }
     };
         
     var present_feedback = {
         type: 'html-keyboard-response',
         stimulus: function() {
-        var feedback_text =
-            '<span style="color:red;font-size:30px;">Incorrect</span>';
-        var last_resp_acc =
-            jsPsych.data.getLastTrialData().values()[0].correct;
-        if (last_resp_acc == true) {
-            feedback_text =
-            '<span style="color:green;font-size:30px;">Correct!</span>'
-        }
-        return feedback_text;
-        },
+            
+            var feedback_text = '<span style="color:red;font-size:30px;">Incorrect</span>';
+            var last_resp_acc = jsPsych.data.getLastTrialData().values()[0].correct;
+            
+            if (last_resp_acc == true) {
+                feedback_text ='<span style="color:green;font-size:30px;">Correct!</span>'
+            }
+            return feedback_text;
+        },  
         choices: jsPsych.NO_KEYS,
         trial_duration: FEEDBACK_DURATION,
         data: { useful_data_flag: false }
@@ -248,7 +238,7 @@
         show_preload_progress_bar: false,
         use_webaudio: false,
         on_finish: function() {
-        jsPsych.data.displayData();
+            jsPsych.data.displayData();
         }
     })
 
