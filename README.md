@@ -27,7 +27,7 @@ This version can be used to do
 Settings can be specified for durations. You can find them in ```globals.js``` 
 
 ## Stimuli
-The easiest and most customisable way to implement masks, is to define them as timeline variables in ```stimuli.js``` for each stimulus/trial specification. A _function_ to do approximately the same is not difficult to add, but this verbose way of defining it in the stimulus.js file leaves it up to the creativity of the user to think up additional categories and or fucntionalities of mask function and behavior. In this boilerplate, we've defined to use a monospaced font, so
+The easiest and most customisable way to implement masks, is to define them as timeline variables in ```stimuli.js``` for each stimulus/trial specification. A _function_ to do approximately the same is not difficult to add, but this verbose way of defining it in the stimulus.js file leaves it up to the creativity of the user to think up additional categories and/or functionalities of masked priming. In this boilerplate, we've defined to use a monospaced font, so
 that the layouting of masks and prime will be consistent, _if_ the user takes into account to use _equal lengt as the prime_ for each masking string. 
 
 ## Things that differ from the parent boilerplate
