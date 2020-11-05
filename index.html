@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
+    <meta charset="utf-8" />
     <title>Primed Lexical Decision Experiment</title>
     <script src="https://web-experiments.lab.hum.uu.nl/jspsych/6.1.0/jspsych.js"></script>
     <script src="https://web-experiments.lab.hum.uu.nl/jspsych/6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
     <script src="https://web-experiments.lab.hum.uu.nl/jspsych/6.1.0/plugins/jspsych-html-button-response.js"></script>
-        <link href="https://web-experiments.lab.hum.uu.nl/jspsych/6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"/>
+    <link href="https://web-experiments.lab.hum.uu.nl/jspsych/6.1.0/css/jspsych.css" rel="stylesheet" type="text/css" />
 
     <!-- Uil OTS scripts -->
     <script src="stimuli.js"></script>
@@ -13,25 +14,24 @@
     <script src="instructions.js"></script>
     <style>
 
-    .stimulus { 
-        font-size: 30px;
-        font-family: monospace;
-        font-weight: normal;
-    }
+        .stimulus {
+            font-size: 30px;
+            font-family: monospace;
+            font-weight: normal;
+        }
 
-    .instruction {
-        text-align: left;
-        margin: 5% 10% 5% 10%;
-    }
+        .instruction {
+            text-align: left;
+            margin: 5% 10% 5% 10%;
+        }
 
-    kbd {
-        border-radius: 2px;
-        padding: 2px;
-        border: 1px solid black;
-    }
-
+        kbd {
+            border-radius: 2px;
+            padding: 2px;
+            border: 1px solid black;
+        }
     </style>
-    </head>
+</head>
     <body></body>
     <script>
     
@@ -117,7 +117,7 @@
     var present_post_prime_mask = {
         type: 'html-keyboard-response',
         stimulus: function(){ 
-            return "<p class='stimulus'>" jsPsych.timelineVariable('post_prime_mask', true) + "</p>";
+            return "<p class='stimulus'>" + jsPsych.timelineVariable('post_prime_mask', true) + "</p>";
         },
         choices: jsPsych.NO_KEYS,
         trial_duration: POST_PRIME_MASK_DURATION,
